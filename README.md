@@ -3,6 +3,9 @@ functions and code blocks, build tasks to compile your code, and shortcuts for t
 
 ## Use CTRL+SHIFT+B to compile your Netlinx code
 
+## New in this release (0.7.0)
++ Added configuration file support when compiling the Netlinx file
+
 ## New in this release (0.6.0):
 + Added a document formatter provider. Use the context menu to select Format Document. You can also enable "Format on Save" in VSCode settings.
 * (0.6.1) Changed AXI file extension to be Netlinx Source so it can be compiled as well.
