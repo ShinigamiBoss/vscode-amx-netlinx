@@ -4,7 +4,7 @@ functions and code blocks, build tasks to compile your code, and shortcuts for t
 ## Use CTRL+SHIFT+B to compile your Netlinx code
 
 ## New in this release (0.7.0)
-+ Added configuration file support when compiling the Netlinx file
++ Adding configuration file support when compiling the Netlinx file (WIP)
 
 ## New in this release (0.6.0):
 + Added a document formatter provider. Use the context menu to select Format Document. You can also enable "Format on Save" in VSCode settings.
