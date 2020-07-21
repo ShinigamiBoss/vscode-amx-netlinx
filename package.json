@@ -2,12 +2,12 @@
 	"name": "amx-netlinx",
 	"displayName": "AMX Netlinx",
 	"description": "Extension for AMX Netlinx. Includes syntax highlighting and compiling.",
-	"version": "0.6.1",
-	"publisher": "sentry07",
+	"version": "0.7.0",
+	"publisher": "created by sentry07, extended by shinigami_boss",
 	"icon": "netlinx.png",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sentry07/vscode-amx-netlinx.git"
+		"url": "https://github.com/ShinigamiBoss/vscode-amx-netlinx.git"
 	},
 	"license": "GPL-3.0",
 	"engines": {
@@ -100,6 +100,11 @@
 						"type": "string",
 						"default": "",
 						"description": "Location of your global Netlinx modules folder for compiling. Leave blank if none."
+					},
+					"netlinx.configurationFile": {
+						"type": "string",
+						"default": "",
+						"description": "Choose a configuration file to use with the Netlinx compiler"
 					}
 				}
 			}
@@ -340,7 +345,7 @@
 	},
 	"__metadata": {
 		"id": "sentry07.amx-netlinx",
-		"publisherId": "sentry07",
+		"publisherId": "sentry07 extended by shinigami_boss",
 		"publisherDisplayName": "Eric Walters"
 	}
 }
