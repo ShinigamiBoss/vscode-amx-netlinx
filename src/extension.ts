@@ -19,7 +19,7 @@ import {
     CancellationToken,
     DocumentRangeFormattingEditProvider,
     DocumentFormattingEditProvider,
-} from "vscode";
+} from 'vscode'
 
 
 let taskProvider: Disposable | undefined;
@@ -64,6 +64,11 @@ export function activate(context: ExtensionContext) {
         }
     });
 
+    let createConfigFile = commands.registerCommand("extension.netlinx_createconfigfile", () => {
+        let copycommand = 'copy \"' +workspace.getConfiguration('netlinx').configlocation +'\" \"' + workspace.rootPath + '\\NetlinxConfig.cfg\"';
+        callShellCommandNoQuoting(copycommand);
+    });
+
     function rebuildTaskList(): void {
         if (taskProvider) {
             taskProvider.dispose();
@@ -76,7 +81,6 @@ export function activate(context: ExtensionContext) {
                     if (!netlinxPromise) {
                         netlinxPromise = getCompileTasks();
                     }
-
                     return netlinxPromise;
                 },
                 resolveTask: () => {
@@ -96,6 +100,7 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(open_includefolder);
     context.subscriptions.push(open_libraryfolder);
     context.subscriptions.push(open_modulefolder);
+    context.subscriptions.push(createConfigFile);
 
     workspace.onDidChangeConfiguration(rebuildTaskList);
     workspace.onDidOpenTextDocument(rebuildTaskList);
@@ -225,6 +230,14 @@ function callShellCommand(shellCommand: string): void {
     let term = window.createTerminal('netlinx', workspace.getConfiguration("netlinx").terminalLocation);
     term.sendText("\"" + shellCommand + "\"", true);
     term.sendText("exit", true);
+}
+
+// Creates a terminal, calls the command, then closes the terminal, 
+//the command is sent without any quotes put at the beginning of the command
+function callShellCommandNoQuoting(shellCommand: string): void {
+    let term = window.createTerminal('netlinx', workspace.getConfiguration("netlinx").terminalLocation);
+    term.sendText(shellCommand, true);
+    //term.sendText("exit", true);
 }
 
 // Adds a folder to the workspace

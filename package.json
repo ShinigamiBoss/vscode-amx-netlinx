@@ -1,7 +1,7 @@
 {
 	"name": "amx-netlinx",
 	"displayName": "AMX Netlinx",
-	"description": "Extension for AMX Netlinx. Includes syntax highlighting and compiling.",
+	"description": "Extension for AMX Netlinx. Includes syntax highlighting and compiling. And COnfiguration file support",
 	"version": "0.7.0",
 	"publisher": "created by sentry07, extended by shinigami_boss",
 	"icon": "netlinx.png",
@@ -25,6 +25,7 @@
 		"onCommand:extension.netlinx_openincludefolder",
 		"onCommand:extension.netlinx_openlibraryfolder",
 		"onCommand:extension.netlinx_openmodulefolder",
+		"onCommand:extension.netlinx_createconfigfile",
 		"onCommand:workbench.action.tasks.runTask",
 		"onLanguage:netlinx-source",
 		"onLanguage:netlinx-library"
@@ -55,6 +56,10 @@
 			{
 				"command": "extension.netlinx_openmodulefolder",
 				"title": "Open Global Module Folder in Workspace"
+			},
+			{
+				"command": "extension.netlinx_createconfigfile",
+				"title": "Create a compiler configuration file"
 			}
 		],
 		"configuration": [
@@ -101,16 +106,21 @@
 						"default": "",
 						"description": "Location of your global Netlinx modules folder for compiling. Leave blank if none."
 					},
-					"netlinx.configurationFile": {
-						"type": "string",
-						"default": "",
-						"description": "Choose a configuration file to use with the Netlinx compiler"
+					"netlinx.configLocation": {
+						"type":"string",
+						"default": "c:\\Program Files (x86)\\Common Files\\AMXShare\\RunNetLinxCompiler\\NLRCExample_1.cfg",
+						"description": "Location of the default config file from AMX"
 					}
 				}
 			}
 		],
 		"menus": {
 			"editor/context": [
+				{
+					"command": "extension.netlinx_createconfigfile",
+					"group": "z_commands@04",
+					"when": "resourceLangId == netlinx-source"
+				},
 				{
 					"command": "extension.netlinx_help",
 					"group": "navigation@1",
@@ -174,6 +184,11 @@
 			]
 		},
 		"keybindings": [
+			{
+				"command": "extension.netlinx_createconfigfile",
+				"key": "ctrl+shift+f8",
+				"when": "resourceLangId == netlinx-source"
+			},
 			{
 				"command": "extension.netlinx_openmodulefolder",
 				"key": "ctrl+shift+f7",
@@ -341,7 +356,7 @@
 		"tslint": "^5.14.0",
 		"typescript": "^3.3.4000",
 		"vsce": "^1.59.0",
-		"vscode": "^1.1.30"
+		"vscode": "^1.1.37"
 	},
 	"__metadata": {
 		"id": "sentry07.amx-netlinx",

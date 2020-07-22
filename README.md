@@ -32,6 +32,7 @@ This extension contributes the following commands:
 * `extension.netlinx_openincludefolder`: Opens the global Netlinx includes folder in the current workspace (if configured in settings)
 * `extension.netlinx_openlibraryfolder`: Opens the global Netlinx libraries folder in the current workspace (if configured in settings)
 * `extension.netlinx_openmodulefolder`: Opens the global Netlinx modules folder in the current workspace (if configured in settings)
+* `extension.netlinx_createconfigfile`: Copy the default config file to the current workspace
 
 ## Extension Settings
 
@@ -45,6 +46,7 @@ This extension contributes the following settings:
 * `netlinx.includesLocation`: sets path of global Netlinx includes folder.
 * `netlinx.libraryLocation`: sets path of global Netlinx libraries folder.
 * `netlinx.modulesLocation`: sets path of global Netlinx modules folder.
+* `netlinx.configLocation`: sets path of default config file provided by AMX.
 
 ## Keybindings and Menus
 
@@ -56,6 +58,7 @@ All commands are added to the right click context menu of the editor tab, and th
 * `ctrl+shift+F5`: Opens Global Includes Folder in Workspace
 * `ctrl+shift+F6`: Opens Global Libraries Folder in Workspace
 * `ctrl+shift+F7`: Opens Global Modules Folder in Workspace
+* `ctrl+shift+F8`: Copy the default configuration file to the workspace
 
 ## Notes
 

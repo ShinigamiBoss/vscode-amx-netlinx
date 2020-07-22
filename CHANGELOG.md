@@ -1,7 +1,7 @@
 # Change Log
 
 ## 0.7.0
-- Added configuration file support (WIP at the moment)
+- Adding configuration file support (WIP at the moment)
 
 ## 0.6.1
 - Changed AXI file to Netlinx Source
