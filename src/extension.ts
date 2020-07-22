@@ -25,6 +25,7 @@ import {
 let taskProvider: Disposable | undefined;
 
 export function activate(context: ExtensionContext) {
+
     let transfer_command = commands.registerCommand("extension.netlinx_transfer", () => {
         callShellCommand(workspace.getConfiguration("netlinx").transferLocation);
     });
@@ -65,8 +66,29 @@ export function activate(context: ExtensionContext) {
     });
 
     let createConfigFile = commands.registerCommand("extension.netlinx_createconfigfile", () => {
-        let copycommand = 'copy \"' +workspace.getConfiguration('netlinx').configlocation +'\" \"' + workspace.rootPath + '\\NetlinxConfig.cfg\"';
+        let copycommand = 'copy \"' + workspace.getConfiguration('netlinx').configLocation + '\" \"' + workspace.rootPath + '\\NetlinxConfig.cfg\"';
         callShellCommandNoQuoting(copycommand);
+    });
+
+    let compileWithCfgFile = commands.registerCommand("extension.netlinx_compilewithcfg", () => {
+        try
+        {
+            let command :string;
+            let file = window.activeTextEditor;
+            let netlinxcompiler = workspace.getConfiguration('netlinx').compilerLocation
+            let cfgfile = file.document.fileName;
+            cfgfile = cfgfile.slice(0, -4);
+            cfgfile = cfgfile + ".cfg";
+            
+            command = "\"" + netlinxcompiler + "\" \"" + file.document.fileName + "\" -CFG\"" + cfgfile.toString() + "\"";
+            
+            callShellCommandNoQuoting(command);
+
+        }
+        catch(err) 
+        {
+            window.showErrorMessage("Error while creating compile task");
+        }
     });
 
     function rebuildTaskList(): void {
@@ -101,6 +123,7 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(open_libraryfolder);
     context.subscriptions.push(open_modulefolder);
     context.subscriptions.push(createConfigFile);
+    context.subscriptions.push(compileWithCfgFile);
 
     workspace.onDidChangeConfiguration(rebuildTaskList);
     workspace.onDidOpenTextDocument(rebuildTaskList);
