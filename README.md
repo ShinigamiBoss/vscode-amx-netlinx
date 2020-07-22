@@ -7,8 +7,9 @@ This is a fork from the project of sentry07 https://github.com/sentry07/vscode-a
 ## Use CTRL+SHIFT+B to compile your Netlinx code
 
 ## New in this release (0.7.0)
-+ Added configuration file support when compiling the Netlinx file:
-* create a new configuration file
+Added configuration file support when compiling the Netlinx file:
+* the command named "Compile the current file with the associated .cfg file" will compile the project with a configuration file
+* one configuration file for each project .axs file need to be created
 * the configuration file must have the same name as the main .axs file
 * the documentation for how compile the cfg file is located in the same folder as the copied .cfg file (Default path is: c:\Program Files (x86)\Common Files\AMXShare\RunNetLinxCompiler)
 * set the cfg option named "MainAXSRootDirectory" with the correct folder path
