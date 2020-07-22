@@ -3,7 +3,7 @@
 	"displayName": "AMX Netlinx",
 	"description": "Extension for AMX Netlinx. Includes syntax highlighting and compiling. And COnfiguration file support",
 	"version": "0.7.0",
-	"publisher": "created by sentry07, extended by shinigami_boss",
+	"publisher": "shiniboss",
 	"icon": "netlinx.png",
 	"repository": {
 		"type": "git",
@@ -106,7 +106,7 @@
 						"default": "",
 						"description": "Location of your global Netlinx modules folder for compiling. Leave blank if none."
 					},
-					"netlinx.configLocation": {
+					"netlinx.vsce": {
 						"type":"string",
 						"default": "c:\\Program Files (x86)\\Common Files\\AMXShare\\RunNetLinxCompiler\\NLRCExample_1.cfg",
 						"description": "Location of the default config file from AMX"
